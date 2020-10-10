@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+*:focus {
+    outline: none;
+}
+
+body {    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background-color: rgb(192, 192, 192) !important;   
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+

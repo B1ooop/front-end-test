@@ -1,0 +1,36 @@
+$shadow: 3px 4px 3px rgba(0, 0, 0, 0.212);
+
+.shadows,
+.btn:focus,
+.btn-info:focus,
+.btn-info:not(:disabled):not(.disabled):active:focus,
+.btn-danger:focus,
+.btn-danger:not(:disabled):not(.disabled):active:focus,
+.btn-success:focus,
+.btn-success:not(:disabled):not(.disabled):active:focus {
+    box-shadow: $shadow;
+}
+
+.br-square {
+    border-radius: 0;
+}
+
+.br-top-square {
+    border-radius: 0px 0px 5px 5px;
+}
+.br-top-right-round {
+    border-radius: 0px 5px 0px 0px;
+}
+.br-bottom-right-round {
+    border-radius: 0px 0px 5px 0px;
+}
+.br-bottom-square {
+    border-radius: 5px 5px 0px 0px;
+}
+.br-round {
+    border-radius: 5px;
+}
+
+.border-2 {
+    border-width: 2px !important;
+}

@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-6 form-wrapper bg-dark text-white">
+
+            <div class="row">
+                <div class="col d-flex justify-content-center edit-header">
+                    <h4>Редактирование</h4>
+                </div>
+            </div>
+
+            <ng-container *ngIf="author">
+                <form [formGroup]="formEditAuthor" novalidate (ngSubmit)="submit($event)">
+                    <div class="form-group mt-3">
+                        <label for="firstName">Имя</label>
+                        <input class="form-control col" type="text" name="firstName" formControlName="firstName"
+                            id="firstName" value="{{author.firstName}}">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="lastName">Фамилия</label>
+                        <input class="form-control col" type="text" formControlName="lastName" id="lastName"
+                            value="{{author.lastName}}">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="patronymic">Отчество</label>
+                        <input class="form-control col" type="text" formControlName="patronymic" id="patronymic"
+                            value="{{author.patronymic}}">
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="birthDate">Дата рождения</label>
+                        <input class="form-control col" type="text" formControlName="birthDate" id="birthDate"
+                            value="{{author.birthDate}}">
+                    </div>
+
+                    <div class="row d-flex flex-column align-items-center ml-1 mr-1">
+                        <div class="col-12 d-flex justify-content-center mb-3 ">
+                            <h4>Книги</h4>
+                        </div>
+                        <div class="col-12  mb-5 border border-primary border-2 p-0 br-round" *ngFor="let book of books">
+                            <div class="row">
+                                <div class="col text-center pt-3">
+                                    <h5 class="m-0 p-0">{{book.title}}</h5>
+                                    {{book.pageQuantity}} ст. ,
+                                    {{book.genre}}
+                                </div>
+
+
+                                <div class="col ">
+                                    <button class="btn btn-outline-warning btn-block br-top-right-round mb-0"
+                                        (click)="editBook(author)">Редактировать</button>
+                                    <button class="btn btn-outline-danger btn-block br-bottom-right-round mt-0"
+                                        (click)="deleteBook(author.id, book)">Удалить</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-outline-info btn-block" (click)="addBook(author)">Добавить книгу</button>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col p-0">
+                            <button class="btn btn-success btn-block m-0 br-square" type="submit">Сохранить</button>
+                            <button class="btn btn-danger btn-block m-0 br-top-square"
+                                (click)="returnToRoot()">Назад</button>
+                        </div>
+                    </div>
+                </form>
+            </ng-container>
+        </div>
+    </div>
+</div>
