@@ -59,7 +59,6 @@ export class AuthorDetailsComponent implements OnInit {
   }
 
   submit(event): void {
-    // Переделать этот хардкод
     this.author = new Author(
       this.id,
       event.target[0].value,
