@@ -34,3 +34,8 @@ $shadow: 3px 4px 3px rgba(0, 0, 0, 0.212);
 .border-2 {
     border-width: 2px !important;
 }
+
+.invalid-input {
+    border-color: red;
+    box-shadow: 0 0 0 0.2rem darken($color: red, $amount: 20%);
+}

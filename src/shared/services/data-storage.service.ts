@@ -42,7 +42,7 @@ export class DataStorageService {
       .then(author => author.find(x => x.id == id));
   }
 
-  pushEditedAuthor(author: Author): void {
+  pushEditedAuthorToArray(author: Author): void {
     let flagNewId: boolean = false;
     for (let index in this.authors) {
       if (this.authors[index].id === author.id) {
@@ -69,7 +69,6 @@ export class DataStorageService {
 
   }
 
-
   deleteBookFromArray(id: number, book: Book): void {
     for (let index in this.authors) {
       if (this.authors[index].id === id) {
@@ -83,6 +82,7 @@ export class DataStorageService {
     this.setLocalStorage(this.authors);
   }
 
+  //convert some properties from raw array to array, from which table takes data
   updateTable(): void {
     this.tableAuthors.splice(0, this.tableAuthors.length)
     for (let index in this.authors) {

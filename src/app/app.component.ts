@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Author } from 'src/shared/classes/author';
 import { TableAuthor } from 'src/shared/classes/tableAuthor';
 import { DataStorageService } from 'src/shared/services/data-storage.service';
+import { ValidatorService } from 'src/shared/services/validator.service';
 
 @Component({
   selector: 'app-root',
@@ -14,18 +15,25 @@ export class AppComponent {
   authors: Author[];
   tableAuthors: TableAuthor[];
 
-  constructor(private dataStorage: DataStorageService, private router: Router) {
-    this.tableAuthors = dataStorage.getTableAuthors();
-    this.authors = dataStorage.getAuthors();
+  constructor(
+    private dataService: DataStorageService,
+     private router: Router,
+     private validatorService: ValidatorService
+     ) {
+    this.tableAuthors = dataService.getTableAuthors();
+    this.authors = dataService.getAuthors();
 
   }
 
   editAuthor(selectedAuthor: Author): void {
     this.router.navigate(["author", selectedAuthor.id]);
+
+    //reset form validators when routing to another :id 
+    this.validatorService.resetChildForm();
   }
 
   deleteAuthor(id: number): void {
-    this.dataStorage.deleteAuthorFromArray(id);
+    this.dataService.deleteAuthorFromArray(id);
     this.router.navigate([""]);
   }
 }

@@ -1,34 +1,106 @@
-<div class="container">
+<div class="container p-0">
     <div class="row mt-5 justify-content-center">
-        <div class="col-6 form-wrapper bg-dark text-white">
+        <div class="col-sm-12 col-md-11 col-lg-6 form-wrapper bg-dark text-white">
 
-            <div class="row ">
-                <div class="col d-flex justify-content-center new-header">
-                    <h4>Добавление</h4>
+            <div class="row">
+                <div class="col d-flex justify-content-center newAuthor-header">
+                    <h4>Добавление автора</h4>
                 </div>
             </div>
 
             <form [formGroup]="formEditAuthor" novalidate (ngSubmit)="submit($event)">
-                <div class="form-group mt-3">
+                <div class="form-group mt-3 mb-4">
                     <label for="firstName">Имя</label>
-                    <input class="form-control col" type="text" name="firstName" formControlName="firstName"
+                    <input
+                        [ngClass]="{'invalid-input': formEditAuthor.get('firstName').touched && formEditAuthor.get('firstName').errors}"
+                        class="form-control col mb-2" type="text" name="firstName" formControlName="firstName"
                         id="firstName">
+
+                    <ng-container
+                        *ngIf="formEditAuthor.get('firstName').touched && formEditAuthor.get('firstName').errors">
+                        <div *ngIf="formEditAuthor.get('firstName').hasError('required')">
+                            Это обязательное поле
+                        </div>
+                        <div *ngIf="formEditAuthor.get('firstName').hasError('minlength')">
+                            Минимум 3 символа
+                        </div>
+                        <div *ngIf="formEditAuthor.get('firstName').hasError('maxlength')">
+                            Максимум 23 символа
+                        </div>
+                        <div
+                            *ngIf="formEditAuthor.get('firstName').hasError('pattern') && !formEditAuthor.get('firstName').hasError('minlength') && !formEditAuthor.get('firstName').hasError('maxlength')">
+                            Только символы русского алфавита, первая буква заглавная
+                        </div>
+                    </ng-container>
+
                 </div>
-                <div class="form-group mb-4">
+
+                <div class=" form-group mb-4">
                     <label for="lastName">Фамилия</label>
-                    <input class="form-control col" type="text" formControlName="lastName" id="lastName">
+                    <input
+                        [ngClass]="{'invalid-input': formEditAuthor.get('lastName').touched && formEditAuthor.get('lastName').errors}"
+                        class="form-control col mb-2" type="text" formControlName="lastName" id="lastName">
+
+                    <ng-container
+                        *ngIf="formEditAuthor.get('lastName').touched && formEditAuthor.get('lastName').errors">
+                        <div *ngIf="formEditAuthor.get('lastName').hasError('required')">
+                            Это обязательное поле
+                        </div>
+                        <div *ngIf="formEditAuthor.get('lastName').hasError('minlength')">
+                            Минимум 3 символа
+                        </div>
+                        <div *ngIf="formEditAuthor.get('lastName').hasError('maxlength')">
+                            Максимум 23 символа
+                        </div>
+                        <div
+                            *ngIf="formEditAuthor.get('lastName').hasError('pattern') && !formEditAuthor.get('lastName').hasError('minlength') && !formEditAuthor.get('lastName').hasError('maxlength')">
+                            Только символы русского алфавита, первая буква заглавная
+                        </div>
+                    </ng-container>
+
                 </div>
                 <div class="form-group mb-4">
                     <label for="patronymic">Отчество</label>
-                    <input class="form-control col" type="text" formControlName="patronymic" id="patronymic">
+                    <input
+                        [ngClass]="{'invalid-input': formEditAuthor.get('patronymic').touched && formEditAuthor.get('patronymic').errors}"
+                        class="form-control col mb-2" type="text" formControlName="patronymic" id="patronymic">
+
+                    <ng-container
+                        *ngIf="formEditAuthor.get('patronymic').touched && formEditAuthor.get('patronymic').errors">
+                        <div *ngIf="formEditAuthor.get('patronymic').hasError('required')">
+                            Это обязательное поле
+                        </div>
+                        <div *ngIf="formEditAuthor.get('patronymic').hasError('minlength')">
+                            Минимум 3 символа
+                        </div>
+                        <div *ngIf="formEditAuthor.get('patronymic').hasError('maxlength')">
+                            Максимум 23 символа
+                        </div>
+                        <div
+                            *ngIf="formEditAuthor.get('patronymic').hasError('pattern') && !formEditAuthor.get('patronymic').hasError('minlength') && !formEditAuthor.get('patronymic').hasError('maxlength')">
+                            Только символы русского алфавита, первая буква заглавная
+                        </div>
+                    </ng-container>
+
                 </div>
                 <div class="form-group mb-4">
                     <label for="birthDate">Дата рождения</label>
-                    <input class="form-control col" type="text" formControlName="birthDate" id="birthDate">
+                    <input
+                        [ngClass]="{'invalid-input': formEditAuthor.get('birthDate').touched && formEditAuthor.get('birthDate').errors}"
+                        class="form-control col mb-2" type="text" formControlName="birthDate" id="birthDate">
+
+                    <ng-container
+                        *ngIf="formEditAuthor.get('birthDate').touched && formEditAuthor.get('birthDate').errors">
+                        <div *ngIf="formEditAuthor.get('birthDate').hasError('required')">
+                            Это обязательное поле
+                        </div>
+                    </ng-container>
+
                 </div>
                 <div class="row mt-5">
                     <div class="col p-0">
-                        <button class="btn btn-success btn-block m-0 br-square" type="submit">Сохранить</button>
+                        <button class="btn btn-success btn-block m-0 br-square" type="submit"
+                            [disabled]="formEditAuthor.invalid">Сохранить</button>
                         <button class="btn btn-danger btn-block m-0 br-top-square"
                             (click)="returnToRoot()">Назад</button>
                     </div>
