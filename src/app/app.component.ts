@@ -33,4 +33,8 @@ export class AppComponent {
     this.dataService.deleteAuthorFromArray(id);
     this.router.navigate([""]);
   }
+
+  viewAuthor(id:number):void {
+    
+  }
 }

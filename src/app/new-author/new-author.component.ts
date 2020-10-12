@@ -26,7 +26,7 @@ export class NewAuthorComponent implements OnInit {
       firstName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(23), Validators.pattern(this.validatorService.anyNameValidator())]],
       lastName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(23), Validators.pattern(this.validatorService.anyNameValidator())]],
       patronymic: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(23), Validators.pattern(this.validatorService.anyNameValidator())]],
-      birthDate: ["", [Validators.required]],
+      birthDate: ["", [Validators.required, Validators.pattern(this.validatorService.dateValidator())]],
     })
   }
 
