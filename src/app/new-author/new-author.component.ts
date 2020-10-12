@@ -37,14 +37,21 @@ export class NewAuthorComponent implements OnInit {
     this.router.navigate([""]);
   }
 
-  submit(event) {
-    // This hardcode should be refactored
+  submit(
+    event,
+    author: Author,
+    firstName: string,
+    lastName: string,
+    patronymic: string,
+    birthDate: string
+  ): void {
+
     this.author = new Author(
       this.dataService.getLenght() + 1,
-      event.target[0].value,
-      event.target[1].value,
-      event.target[2].value,
-      event.target[3].value,
+      firstName,
+      lastName,
+      patronymic,
+      this.dataService.stringToDate(birthDate),
       []
     );
     this.dataService.pushEditedAuthorToArray(this.author);

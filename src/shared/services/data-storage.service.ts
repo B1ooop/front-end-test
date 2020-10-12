@@ -35,11 +35,20 @@ export class DataStorageService {
 
   getLenght(): number { return this.authors.length; }
 
+  formatDate(birthDate: Date): string {
+    birthDate = new Date(birthDate);
+    return `${birthDate.getDate()}-${birthDate.getMonth()}-${birthDate.getFullYear()}`;
+  }
+
+  stringToDate(str: string): Date {
+    let strArr = str.split("-");
+    return new Date(parseInt(strArr[2]), parseInt(strArr[1]), parseInt(strArr[0]));
+  }
 
   getAuthorById(id: number): Promise<Author> {
     let authorPromise = Promise.resolve(this.authors);
     return authorPromise
-      .then(author => author.find(x => x.id == id));
+      .then(author => author.find(x => x.id == id))
   }
 
   pushEditedAuthorToArray(author: Author): void {

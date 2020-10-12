@@ -26,7 +26,7 @@ export class AppComponent {
   }
 
   editAuthor(selectedAuthor: Author): void {
-    this.router.navigate(["author", selectedAuthor.id]);
+    this.router.navigate(["editAuthor", selectedAuthor.id]);
 
     //reset form validators when routing to another :id 
     this.validatorService.resetChildForm();

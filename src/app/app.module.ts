@@ -8,12 +8,14 @@ import { AuthorDetailsComponent } from './author-details/author-details.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewAuthorComponent } from './new-author/new-author.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditBookComponent } from './edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthorDetailsComponent,
-    NewAuthorComponent
+    NewAuthorComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,

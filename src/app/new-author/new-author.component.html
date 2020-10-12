@@ -8,12 +8,13 @@
                 </div>
             </div>
 
-            <form [formGroup]="formEditAuthor" novalidate (ngSubmit)="submit($event)">
+            <form [formGroup]="formEditAuthor" novalidate
+                (ngSubmit)="submit($event, author, firstName.value, lastName.value, patronymic.value, birthDate.value)">
                 <div class="form-group mt-3 mb-4">
                     <label for="firstName">Имя</label>
                     <input
                         [ngClass]="{'invalid-input': formEditAuthor.get('firstName').touched && formEditAuthor.get('firstName').errors}"
-                        class="form-control col mb-2" type="text" name="firstName" formControlName="firstName"
+                        class="form-control col mb-2" #firstName type="text" name="firstName" formControlName="firstName"
                         id="firstName">
 
                     <ng-container
@@ -39,7 +40,7 @@
                     <label for="lastName">Фамилия</label>
                     <input
                         [ngClass]="{'invalid-input': formEditAuthor.get('lastName').touched && formEditAuthor.get('lastName').errors}"
-                        class="form-control col mb-2" type="text" formControlName="lastName" id="lastName">
+                        class="form-control col mb-2" #lastName type="text" formControlName="lastName" id="lastName">
 
                     <ng-container
                         *ngIf="formEditAuthor.get('lastName').touched && formEditAuthor.get('lastName').errors">
@@ -63,7 +64,7 @@
                     <label for="patronymic">Отчество</label>
                     <input
                         [ngClass]="{'invalid-input': formEditAuthor.get('patronymic').touched && formEditAuthor.get('patronymic').errors}"
-                        class="form-control col mb-2" type="text" formControlName="patronymic" id="patronymic">
+                        class="form-control col mb-2" #patronymic type="text" formControlName="patronymic" id="patronymic">
 
                     <ng-container
                         *ngIf="formEditAuthor.get('patronymic').touched && formEditAuthor.get('patronymic').errors">
@@ -87,7 +88,7 @@
                     <label for="birthDate">Дата рождения</label>
                     <input
                         [ngClass]="{'invalid-input': formEditAuthor.get('birthDate').touched && formEditAuthor.get('birthDate').errors}"
-                        class="form-control col mb-2" type="text" formControlName="birthDate" id="birthDate">
+                        class="form-control col mb-2" #birthDate type="text" formControlName="birthDate" id="birthDate">
 
                     <ng-container
                         *ngIf="formEditAuthor.get('birthDate').touched && formEditAuthor.get('birthDate').errors">

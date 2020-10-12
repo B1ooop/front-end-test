@@ -5,11 +5,11 @@ import { NewAuthorComponent } from './new-author/new-author.component';
 
 const routes: Routes = [
   {
-    path: "new",
+    path: "addAuthor",
     component: NewAuthorComponent
   },
   {
-    path: "author/:id",
+    path: "editAuthor/:id",
     component: AuthorDetailsComponent,
     children: [
      /*  {
