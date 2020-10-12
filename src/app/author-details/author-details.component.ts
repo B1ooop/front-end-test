@@ -41,7 +41,7 @@ export class AuthorDetailsComponent implements OnInit, AfterViewInit {
         .then(result => {
           this.author = result
           this.books = this.author.books;
-          
+
           this.formEditAuthor = this.fb.group({
             firstName: [this.author.firstName, [Validators.required, Validators.minLength(3), Validators.maxLength(23), Validators.pattern(this.validatorService.anyNameValidator())]],
             lastName: [this.author.lastName, [Validators.required, Validators.minLength(3), Validators.maxLength(23), Validators.pattern(this.validatorService.anyNameValidator())]],
@@ -50,18 +50,12 @@ export class AuthorDetailsComponent implements OnInit, AfterViewInit {
           })
         });
     });
-    //reset form validators when routing to another :id 
-    this.validatorService.getResetFormSubject().subscribe(response => {
-      if (response) {
-        this.formEditAuthor.reset();
-      }
-    })
   }
 
   ngAfterViewInit(): void {
 
   }
-  
+
 
   deleteBook(id: number, book: Book): void {
     this.dataService.deleteBookFromArray(id, book);
@@ -84,7 +78,7 @@ export class AuthorDetailsComponent implements OnInit, AfterViewInit {
     lastName: string,
     patronymic: string,
     birthDate: string
-  ): void {    
+  ): void {
     this.author = new Author(
       this.id,
       firstName,
